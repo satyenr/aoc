@@ -1,5 +1,6 @@
 import Data.Char
 
+main :: IO ()
 main = do
     input <- getLine
     print (sumOfRepeated input 1)
