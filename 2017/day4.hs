@@ -1,12 +1,18 @@
 import qualified Data.Set as Set
+import Data.List
 
 main :: IO ()
 main = do
     input <- getContents
-    print (allUnique input)
+    print (allunique  input)
+    print (noanagrams input)
 
-allUnique :: String -> Int
-allUnique input = length $ filter isValid (lines input)
-    where isValid pp    = uniq pp == wc pp
-          uniq    str   = Set.size $ Set.fromList (words str)
-          wc      str   = length (words str)
+unique :: [String] -> Bool
+unique xs = uniq xs == length xs
+    where uniq = Set.size . Set.fromList
+
+allunique :: String -> Int
+allunique pass = length $ filter (unique . words) (lines pass)
+
+noanagrams :: String -> Int
+noanagrams pass = length $ filter (unique . (map sort) . words) (lines pass)
