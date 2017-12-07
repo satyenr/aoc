@@ -1,4 +1,3 @@
-import qualified Data.Set as Set
 import Data.List
 
 main :: IO ()
@@ -8,8 +7,7 @@ main = do
     print (noanagrams input)
 
 unique :: [String] -> Bool
-unique xs = uniq xs == length xs
-    where uniq = Set.size . Set.fromList
+unique xs = length (nub xs) == length xs
 
 allunique :: String -> Int
 allunique pass = length $ filter (unique . words) (lines pass)
