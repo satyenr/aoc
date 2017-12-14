@@ -1,0 +1,12 @@
+# See http://docs.haskellstack.org/en/stable/yaml_configuration/ for documentation.
+
+resolver: lts-9.18
+
+packages:
+- '.'
+
+extra-deps: []
+flags: {}
+extra-package-dbs: []
+system-ghc: true
+local-bin-path: bin
