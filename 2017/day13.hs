@@ -15,10 +15,8 @@ scannerPosition psec range
           limit    = range - 1
 
 totalPenalty :: M.Map Int Int -> [Int]
-totalPenalty scnData = take 10 [ penalty (depth psec) | psec <- [0 .. ], scannerPosition psec (range $ depth psec) == depth psec]
-    where depth ps = ps
-          range dep = case lookup dep scnData of
-                          Nothing -> 0
-                          Just n  -> n
+totalPenalty scnData = take 10 [ penalty (depth psec) | psec <- [0 .. 10], scannerPosition psec (range $ depth psec) == depth psec]
+    where depth ps    = ps
+          range dep   = M.findWithDefault 0 dep scnData
           penalty dep = dep * (range dep)
 
