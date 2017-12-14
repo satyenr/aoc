@@ -1,2 +1,2 @@
-*
-!**/*.hs
+.stack-work/*
+bin/*
