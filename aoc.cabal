@@ -1,0 +1,37 @@
+name:                aoc
+version:             0.1.0.0
+synopsis:            Advent of Code
+description:         Solutions to Advent of Code problems
+homepage:            https://github.com/satyenr/aoc
+license:             MIT
+license-file:        LICENSE
+author:              Satyen Rai
+copyright:           Satyen Rai
+build-type:          Simple
+cabal-version:       >=1.10
+extra-source-files:  README.md
+
+----------------------------------------
+executable day01
+  hs-source-dirs:      src/haskell/2017
+  main-is:             day01.hs
+  default-language:    Haskell2010
+  build-depends:       base
+  ghc-options:         -Wall
+
+----------------------------------------
+executable day02
+  hs-source-dirs:      src/haskell/2017
+  main-is:             day02.hs
+  default-language:    Haskell2010
+  build-depends:       base
+  ghc-options:         -Wall
+
+----------------------------------------
+executable day04
+  hs-source-dirs:      src/haskell/2017
+  main-is:             day04.hs
+  default-language:    Haskell2010
+  build-depends:       base
+  ghc-options:         -Wall
+
