@@ -8,4 +8,8 @@ main = do
 
 twist :: [Int] -> [Int] -> Int -> Int -> [Int]
 twist xs [] _ _ = xs
-twist xs len cur skip = twist (take (length xs) $ (reverse $ take (head len) $ drop cur $ cycle xs) ++ (drop ((head len) + cur) $ cycle xs)) (tail len) (cur + (head len) + skip) (skip + 1)
+twist xs len cur skip = twist xs' len' cur' (skip + 1)
+    where xs'    = take (length xs) $ (reverse $ take curlen $ drop cur $ cycle xs) ++ (drop (curlen + cur) $ cycle xs)
+          len'   = tail len
+          curlen = head len
+          cur'   = cur + skip + curlen
