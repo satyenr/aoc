@@ -6,7 +6,7 @@ main = do
     print (divsum   input)
 
 transform :: String -> [[Int]]
-transform input = [map (read::String->Int) x | x <- (map words $ lines input)]
+transform input = [map (read :: String -> Int) x | x <- (map words $ lines input)]
 
 checksum :: [[Int]] -> Int
 checksum []     = 0

@@ -13,7 +13,6 @@ main = do
 
     -- Part One
     let lengths = map (read :: String -> Int) $ splitOn "," input
-    print (knotHash lengths list 0 0)
     print (product $ take 2 $ knotHash lengths list 0 0)
 
     -- Part Two
