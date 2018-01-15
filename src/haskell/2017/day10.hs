@@ -1,4 +1,5 @@
 import Data.List.Split (splitOn)
+import Control.Applicative
 
 main :: IO ()
 main = do
@@ -9,10 +10,10 @@ main = do
 partOne :: [Int] -> [Int] -> Int -> Int -> [Int]
 partOne xs [] _ _ = xs
 partOne xs len cur skip = partOne xs' len' cur' skip'
-    where xs'         = rotate (lxs - cur) (reverse (take curlen (rotate cur xs)) ++ (drop curlen (rotate cur xs)))
+    where xs'         = rotate (length xs - cur) $ nxt $ rotate cur xs
+          nxt         = liftA2 (++) (reverse . (take curlen)) (drop curlen)
           len'        = tail len
-          cur'        = (cur + curlen + skip) `mod` lxs
+          cur'        = (cur + curlen + skip) `mod` (length xs)
           skip'       = skip + 1
           rotate n ys = take (length ys) $ drop n $ cycle ys
           curlen      = head len
-          lxs         = length xs
