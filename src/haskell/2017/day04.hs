@@ -3,7 +3,11 @@ import Data.List
 main :: IO ()
 main = do
     input <- getContents
+
+    -- Part 1
     print (allunique  input)
+
+    -- Part 2
     print (noanagrams input)
 
 unique :: [String] -> Bool

@@ -11,11 +11,11 @@ main = do
     input <- getContents
     let list = [0 .. 255]
 
-    -- Part One
+    -- Part 1
     let lengths = map (read :: String -> Int) $ splitOn "," input
     print (product $ take 2 $ knotHash lengths list 0 0)
 
-    -- Part Two
+    -- Part 2
     let salt = [17, 31, 73, 47, 23]
     let bytes = map ord (strip input) ++ salt
     let shRuns = 64

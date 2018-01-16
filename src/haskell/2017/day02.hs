@@ -2,7 +2,11 @@ main :: IO ()
 main = do
     rawInput <- getContents
     let input = transform rawInput
+
+    -- Part 1
     print (checksum input)
+
+    -- Part 2
     print (divsum   input)
 
 transform :: String -> [[Int]]
