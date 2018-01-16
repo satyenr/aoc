@@ -1,15 +1,19 @@
 .PHONY: install dirs cpp
 
-bin     = bin
-build   = build
-install = install --compare -vD
+bin      = bin
+src      = src
+build    = build
+install  = install --compare -vD
+cpp      = g++
+cppflags = -Wall -std=c++11
 
 dirs:
 	mkdir -p $(build)/$(bin)
 	mkdir -p $(bin)
 
 cpp: dirs
-	g++ -Wall -std=c++11 -o build/bin/day-05-2017 src/day-05-2017.cpp
+	$(cpp) $(cppflags) -o build/bin/day-05-2017 $(src)/day-05-2017.cpp
+	$(cpp) $(cppflags) -o build/bin/aoc $(src)/aoc.cpp
 
 install: cpp
 	$(install) -m 755 $(build)/$(bin)/* $(bin)/ 
