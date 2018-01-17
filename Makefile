@@ -12,7 +12,7 @@ dirs:
 	mkdir -p $(bin)
 
 cpp: dirs
-	$(cpp) $(cppflags) -o build/bin/day-05-2017 $(src)/day-05-2017.cpp
+	$(cpp) $(cppflags) -o build/bin/day05 $(src)/2017/day05.cpp
 	$(cpp) $(cppflags) -o build/bin/aoc $(src)/aoc.cpp
 
 install: cpp

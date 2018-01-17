@@ -55,10 +55,6 @@ void parse_opts(int argc, char** argv, config *retval) {
     }
 }
 
-bool validate_opts(config conf) {
-
-}
-
 int main(int argc, char** argv) {
     config conf;
     parse_opts(argc, argv, &conf);
