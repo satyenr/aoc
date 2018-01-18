@@ -2,12 +2,11 @@
 
 use strict;
 use warnings;
-use 5.010;
+use v5.10;
 
 sub steps {
-    my $oref = shift;
-    my @offsets = @{$oref};
-    my $mut = shift;
+    my @offsets = @{shift @_};
+    my $mut = \&{shift @_};
 
     my $steps = 0;
     my $inc = 0;
