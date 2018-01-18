@@ -7,13 +7,13 @@
 using namespace std;
 
 int steps(vector <int> offsets, function <int(int)> mut) {
-    auto steps = 0, inc = 0;
+    auto retval = 0, inc = 0;
     for (auto cur = offsets.begin(); cur < offsets.end() && cur >= offsets.begin(); cur += inc ) {
-        steps++;
+        retval++;
         inc = *cur;
         *cur = mut(*cur);
     }
-    return steps;
+    return retval;
 }
 
 int main() {

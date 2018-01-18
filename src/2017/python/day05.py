@@ -4,18 +4,16 @@ import sys
 
 
 def steps(offsets, mut):
-    steps = 0
+    retval = 0
     inc = 0
     ctr = 0
-    while True:
-        steps += 1
+    while ctr < len(offsets) and ctr >= 0:
+        retval += 1
         inc = offsets[ctr]
         offsets[ctr] = mut(offsets[ctr])
         ctr += inc
-        if ctr >= len(offsets) or ctr < 0:
-            break
 
-    return steps
+    return retval
 
 
 def main():

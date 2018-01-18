@@ -8,14 +8,14 @@ sub steps {
     my @offsets = @{shift @_};
     my $mut = \&{shift @_};
 
-    my $steps = 0;
+    my $retval = 0;
     my $inc = 0;
     for (my $i = 0; $i <= $#offsets && $i >=0; $i += $inc) {
-        $steps++;
+        $retval++;
         $inc = $offsets[$i];
         $offsets[$i] = $mut->($offsets[$i]);
     }
-    return $steps;
+    return $retval;
 }
 
 sub main {

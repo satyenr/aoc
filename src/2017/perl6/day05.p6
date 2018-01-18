@@ -3,14 +3,14 @@
 use v6;
 
 sub steps(@offsets is copy, $mut) {
-    my $steps = 0;
+    my $retval = 0;
     my $inc = 0;
     loop (my $i = 0; $i < @offsets.elems && $i >= 0; $i += $inc) {
-        $steps++;
+        $retval++;
         $inc = @offsets[$i];
         @offsets[$i] = $mut(@offsets[$i]);
     }
-    return $steps;
+    return $retval;
 }
 
 sub MAIN {
