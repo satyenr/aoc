@@ -21,12 +21,12 @@ func main() {
 	offsets = append(offsets, make([]int, len(lines)))
 
 	for i, line := range lines {
-		if offset, err := strconv.Atoi(line); err != nil {
+		offset, err := strconv.Atoi(line)
+		if err != nil {
 			panic("Failed to parse input - aborting!")
-		} else {
-			offsets[0][i] = offset
-			offsets[1][i] = offset
 		}
+		offsets[0][i] = offset
+		offsets[1][i] = offset
 	}
 
 	// Part 1
