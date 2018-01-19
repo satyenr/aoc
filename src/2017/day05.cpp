@@ -1,5 +1,6 @@
 #include <functional>
 #include <iostream>
+#include <iterator>
 #include <sstream>
 #include <string>
 #include <vector>
@@ -17,14 +18,7 @@ int steps(vector <int> offsets, function <int(int)> mut) {
 }
 
 int main() {
-    vector <int> offsets;
-    string line;
-    while (getline(cin, line)) {
-        stringstream val(line);
-        int x = 0;
-        val >> x;
-        offsets.push_back(x);
-    }
+    vector<int> offsets {istream_iterator<int> {cin}, {}};
 
     // Part 1
     cout << steps(offsets, [](int x){ return x + 1; }) << endl;
