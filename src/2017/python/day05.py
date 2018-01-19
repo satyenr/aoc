@@ -7,7 +7,7 @@ def steps(offsets, mut):
     retval = 0
     inc = 0
     ctr = 0
-    while ctr < len(offsets) and ctr >= 0:
+    while 0 <= ctr < len(offsets):
         retval += 1
         inc = offsets[ctr]
         offsets[ctr] = mut(offsets[ctr])
