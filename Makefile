@@ -5,7 +5,7 @@ src      = src
 build    = build
 install  = install --compare -vD
 cpp      = g++
-cppflags = -Wall -std=c++11
+cppflags = -Wall -std=c++11 -O2
 
 dirs:
 	mkdir -p $(build)/$(bin)
