@@ -1,16 +1,23 @@
 main :: IO ()
 main = do
     input <- getContents
-    print (score input Group 0 0)
+    let result = count input Group 0 0 0
+
+    -- Part 1
+    print (fst result)
+
+    -- Part 2
+    print (snd result)
 
 data State = Group | Garbage deriving Eq
 
-score :: String -> State -> Int -> Int -> Int
-score [] _ _ acc          = acc
-score (c:cs) state depth acc
-    | c == '!'                     = score (tail cs) state depth acc
-    | state == Garbage && c == '>' = score cs Group depth acc
-    | state == Group   && c == '{' = score cs Group (depth + 1) acc
-    | state == Group   && c == '}' = score cs Group (depth - 1) (acc + depth)
-    | state == Group   && c == '<' = score cs Garbage depth acc
-    | otherwise                    = score cs state depth acc
+count :: String -> State -> Int -> Int -> Int -> (Int, Int)
+count [] _ _ score garbage         = (score, garbage)
+count (c:cs) state depth score garbage
+    | c == '!'                     = count (tail cs) state depth score garbage
+    | state == Garbage && c == '>' = count cs Group depth score garbage
+    | state == Garbage && c /= '>' = count cs state depth score (garbage + 1)
+    | state == Group   && c == '{' = count cs Group (depth + 1) score garbage
+    | state == Group   && c == '}' = count cs Group (depth - 1) (score + depth) garbage
+    | state == Group   && c == '<' = count cs Garbage depth score garbage
+    | otherwise                    = count cs state depth score garbage
