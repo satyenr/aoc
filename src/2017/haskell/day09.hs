@@ -14,7 +14,7 @@ data State = Group | Garbage deriving Eq
 count :: String -> State -> Int -> Int -> Int -> (Int, Int)
 count [] _ _ score garbage         = (score, garbage)
 count (c:cs) state depth score garbage
-    | c == '!'                     = count (tail cs) state depth score garbage
+    | state == Garbage && c == '!' = count (tail cs) state depth score garbage
     | state == Garbage && c == '>' = count cs Group depth score garbage
     | state == Garbage && c /= '>' = count cs state depth score (garbage + 1)
     | state == Group   && c == '{' = count cs Group (depth + 1) score garbage
