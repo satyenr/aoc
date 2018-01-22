@@ -19,5 +19,5 @@ $input = ARGF.readlines.map { |s| s.to_i}
 # Part 1
 puts steps $input.dup, lambda { |x| x + 1 }
 
-# Part 1
+# Part 2
 puts steps $input.dup, lambda { |x| x < 3 ? x + 1 : x - 1 }
