@@ -1,3 +1,5 @@
+import Utils (rotate)
+
 main :: IO ()
 main = do
     input <- getContents
@@ -20,5 +22,3 @@ steps offsets fn cur acc
           mut _ _ []     = []
           mut 0 f (x:xs) = (f x):xs
           mut n f xs     = rotate (length xs - n) $ (mut 0 f) $ rotate n xs
-          rotate 0 ys    = ys
-          rotate n ys    = take (length ys) $ drop n $ cycle ys

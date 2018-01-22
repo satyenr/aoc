@@ -1,7 +1,7 @@
 import Data.Maybe (fromJust)
 import Data.List  (elemIndex)
 import Data.Set   (Set)
-import Utils
+import Utils      (rotate)
 
 import qualified Data.Set as S
 

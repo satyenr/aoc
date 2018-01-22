@@ -4,6 +4,7 @@ import Data.Char            (ord)
 import Data.List.Split      (splitOn, chunksOf)
 import Data.String.Utils    (strip)
 import Numeric              (showHex)
+import Utils                (rotate)
 
 
 main :: IO ()
@@ -30,7 +31,6 @@ knotHash (x:xs) list cur skip = knotHash xs list' cur' (skip + 1)
     where list'       = rotate (length list - cur) $ nxt $ rotate cur list
           nxt         = liftA2 (++) (reverse . (take x)) (drop x)
           cur'        = (cur + x + skip) `mod` (length list)
-          rotate n ys = take (length ys) $ drop n $ cycle ys
 
 sparseHash :: [Int] -> [Int] -> Int -> [Int]
 sparseHash xs list count =
