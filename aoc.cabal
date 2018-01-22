@@ -55,6 +55,15 @@ executable day05
   ghc-options:         -Wall
 
 ----------------------------------------
+executable day06
+  hs-source-dirs:      src/2017/haskell
+  main-is:             day06.hs
+  other-modules:       Utils
+  default-language:    Haskell2010
+  build-depends:       base, containers
+  ghc-options:         -Wall
+
+----------------------------------------
 executable day09
   hs-source-dirs:      src/2017/haskell
   main-is:             day09.hs
