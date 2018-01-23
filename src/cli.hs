@@ -14,17 +14,25 @@ import qualified AOC.Y2017 as Y2017
 main :: IO ()
 main = do
     clopts <- parseCommandLine
-    input <- getContents
 
     start <- getTime Monotonic
-    let result = Y2017.result (day clopts) input
+    input <- getContents
+    ready <- getTime Monotonic
+    let res = result (year clopts) (day clopts) input
     end <- getTime Monotonic
 
-    fprint ("solutions:\n")
-    fprint ("  part-one: " % string % "\n") (fst result)
-    fprint ("  part-two: " % string % "\n") (snd result)
+    fprint ("solution:\n")
+    fprint ("  part-one: " % string % "\n") (fst res)
+    fprint ("  part-two: " % string % "\n") (snd res)
 
-    fprint ("time: " % timeSpecs % "\n") start end
+    fprint ("time:\n")
+    fprint ("  input: " % timeSpecs % "\n") start ready
+    fprint ("  process: " % timeSpecs % "\n") ready end
+    fprint ("  total: " % timeSpecs % "\n") start end
+
+result :: Int -> (Int -> String -> (String, String))
+result 2017 = Y2017.result
+result _    = error "Year not available"
 
 -- CLI Parsing ----------------------------------------------------------------
 
@@ -46,11 +54,6 @@ commandLineParser = CommandLine
           <> short 'd'
           <> metavar "DAY"
           <> help "AoC day for the given year" )
-        -- <*> option auto
-        --    ( long "part"
-        --   <> short 'p'
-        --   <> metavar "PART"
-        --   <> help "Part of the problem" )
 
 parseCommandLine :: IO CommandLine
 parseCommandLine = parse $ info (helper <*> commandLineParser)
