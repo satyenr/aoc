@@ -1,14 +1,12 @@
+module AOC.Y2017.Day04 (result) where
+
 import Data.List
 
-main :: IO ()
-main = do
-    input <- getContents
-
-    -- Part 1
-    print (allunique  input)
-
-    -- Part 2
-    print (noanagrams input)
+result :: String -> (String, String)
+result input =
+    let one = show $ allunique input
+        two = show $ noanagrams input
+    in (one, two)
 
 unique :: [String] -> Bool
 unique xs = length (nub xs) == length xs
