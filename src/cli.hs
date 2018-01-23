@@ -21,8 +21,8 @@ main = do
     end <- getTime Monotonic
 
     fprint ("solutions:\n")
-    fprint ("  - part-one: " % string % "\n") (fst result)
-    fprint ("  - part-two: " % string % "\n") (snd result)
+    fprint ("  part-one: " % string % "\n") (fst result)
+    fprint ("  part-two: " % string % "\n") (snd result)
 
     fprint ("time: " % timeSpecs % "\n") start end
 
