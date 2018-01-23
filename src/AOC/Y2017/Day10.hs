@@ -1,29 +1,26 @@
+module AOC.Y2017.Day10 (result) where
+
 import Control.Applicative  (liftA2)
 import Data.Bits            (xor)
 import Data.Char            (ord)
 import Data.List.Split      (splitOn, chunksOf)
 import Data.String.Utils    (strip)
 import Numeric              (showHex)
-import Utils                (rotate)
+import AOC.Utils            (rotate)
 
-
-main :: IO ()
-main = do
-    input <- getContents
+result :: String -> (String, String)
+result input =
     let list = [0 .. 255]
-
-    -- Part 1
-    let lengths = map (read :: String -> Int) $ splitOn "," input
-    print (product $ take 2 $ knotHash lengths list 0 0)
-
-    -- Part 2
-    let salt = [17, 31, 73, 47, 23]
-    let bytes = map ord (strip input) ++ salt
-    let shRuns = 64
-    let sh = sparseHash bytes list shRuns
-    let dhChunkSz = 16
-    let dh = denseHash sh dhChunkSz
-    putStrLn (concat $ map hex dh)
+        lengths = map (read :: String -> Int) $ splitOn "," input
+        salt = [17, 31, 73, 47, 23]
+        bytes = map ord (strip input) ++ salt
+        shRuns = 64
+        sh = sparseHash bytes list shRuns
+        dhChunkSz = 16
+        dh = denseHash sh dhChunkSz    
+        one = show $ product $ take 2 $ knotHash lengths list 0 0
+        two = show $ concat $ map hex dh
+    in (one, two)
 
 knotHash :: [Int] -> [Int] -> Int -> Int -> [Int]
 knotHash [] list _ _          = list
