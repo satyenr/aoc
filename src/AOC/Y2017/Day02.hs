@@ -1,13 +1,11 @@
-main :: IO ()
-main = do
-    rawInput <- getContents
-    let input = transform rawInput
+module AOC.Y2017.Day02 (result) where
 
-    -- Part 1
-    print (checksum input)
-
-    -- Part 2
-    print (divsum   input)
+result :: String -> (String, String)
+result input =
+    let spreadsheet = transform input
+        one = show $ checksum spreadsheet
+        two = show $ divsum spreadsheet
+    in (one, two)
 
 transform :: String -> [[Int]]
 transform input = [map (read :: String -> Int) x | x <- (map words $ lines input)]
