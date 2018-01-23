@@ -1,15 +1,13 @@
-import Utils (rotate)
+module AOC.Y2017.Day05 (result) where
 
-main :: IO ()
-main = do
-    input <- getContents
+import AOC.Utils (rotate)    
+
+result :: String -> (String, String)
+result input =
     let offsets = map (read :: String -> Int) $ lines input
-
-    -- Part 1
-    print (steps offsets (+ 1) 0 0)
-
-    -- Part 2
-    print (steps offsets (\x -> if x >= 3 then x - 1 else x + 1) 0 0)
+        one = show $ steps offsets (+ 1) 0 0
+        two = show $ steps offsets (\x -> if x >= 3 then x - 1 else x + 1) 0 0
+    in (one, two)
 
 -- Slow version using immutable data structures
 -- Takes forever for any non-trivial input - especially the second part
