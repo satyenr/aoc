@@ -1,21 +1,20 @@
+module AOC.Y2017.Day06 (result) where
+
 import Data.Maybe (fromJust)
 import Data.List  (elemIndex)
 import Data.Set   (Set)
-import Utils      (rotate)
+import AOC.Utils  (rotate)
 
 import qualified Data.Set as S
 
-main :: IO ()
-main = do
-    input <- getContents
-    let banks = map (read :: String -> Int) $ words input
-    let result = redistCount banks S.empty 0
 
-    -- Part 1
-    print (fst result)
-    
-    -- Part 2
-    print (fst $ redistCount (snd result) S.empty 0)
+result :: String -> (String, String)
+result input =
+    let banks = map (read :: String -> Int) $ words input
+        redistRes = redistCount banks S.empty 0
+        one = show $ fst redistRes
+        two = show $ fst $ redistCount (snd redistRes) S.empty 0
+    in (one, two)
 
 redistCount :: [Int] -> Set [Int] -> Int -> (Int, [Int])
 redistCount banks seen acc
