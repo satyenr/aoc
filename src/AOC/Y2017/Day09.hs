@@ -1,13 +1,11 @@
-main :: IO ()
-main = do
-    input <- getContents
-    let result = count input Group 0 0 0
+module AOC.Y2017.Day09 (result) where
 
-    -- Part 1
-    print (fst result)
-
-    -- Part 2
-    print (snd result)
+result :: String -> (String, String)
+result input =
+    let countRes = count input Group 0 0 0
+        one = show $ fst countRes
+        two = show $ snd countRes
+    in (one, two)
 
 data State = Group | Garbage deriving Eq
 
