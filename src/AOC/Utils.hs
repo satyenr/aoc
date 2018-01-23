@@ -1,4 +1,4 @@
-module Utils (rotate) where
+module AOC.Utils (rotate) where
 
 rotate :: Int -> [a] -> [a]
 rotate n xs 

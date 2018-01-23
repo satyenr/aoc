@@ -9,7 +9,7 @@ import Options.Applicative
 import System.Clock
 
 import qualified System.Console.Terminal.Size as Terminal
-import qualified AOC.Y2017 as Y2017
+import qualified AOC.Y2017                    as Y2017
 
 main :: IO ()
 main = do
@@ -21,7 +21,7 @@ main = do
     let res = result (year clopts) (day clopts) input
     end <- getTime Monotonic
 
-    fprint ("solution:\n")
+    fprint ("answer:\n")
     fprint ("  part-one: " % string % "\n") (fst res)
     fprint ("  part-two: " % string % "\n") (snd res)
 

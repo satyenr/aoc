@@ -7,9 +7,9 @@ import Data.Text (strip, unpack, pack)
 
 result :: String -> (String, String)
 result input =
-    let saneInput = (unpack . strip . pack) input
-        one = show $ sumDups 1 saneInput
-        two = show $ sumDups ((length saneInput) `div` 2) saneInput
+    let capcha = (unpack . strip . pack) input
+        one = show $ sumDups 1 capcha
+        two = show $ sumDups ((length capcha) `div` 2) capcha
     in (one, two)
 
 sumDups :: Int -> String -> Int
