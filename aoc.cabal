@@ -13,8 +13,8 @@ extra-source-files:  README.md
 
 ---------------------------------------
 executable aoc-hs
-  hs-source-dirs:      src
-  main-is:             cli.hs
+  hs-source-dirs:      src/haskell
+  main-is:             main.hs
   other-modules:
       AOC.Utils
     , AOC.Y2017
