@@ -12,8 +12,8 @@ dirs:
 	mkdir -p $(bin)
 
 cpp: dirs
-	$(cpp) $(cppflags) -o build/bin/day05 $(src)/2017/day05.cpp
-	$(cpp) $(cppflags) -o build/bin/aoc $(src)/aoc.cpp
+	$(cpp) $(cppflags) -o build/bin/five $(src)/five.cpp
+	$(cpp) $(cppflags) -o build/bin/aoc $(src)/main.cpp
 
 install: cpp
 	$(install) -m 755 $(build)/$(bin)/* $(bin)/ 
