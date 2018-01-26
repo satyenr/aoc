@@ -1,5 +1,6 @@
 defmodule AOC.Y2017 do
-  alias AOC.Y2017.Day01, as: One
+  alias AOC.Y2017.One, as: One
+
   def answer(day, input) do
     case day do
       "1" -> One.answer(input)
