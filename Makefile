@@ -1,22 +1,29 @@
-.PHONY: install dirs cpp
+.PHONY: dirs cpp
 
 bin      = bin
 src      = src
-build    = build
+build    = _build .stack-work
 install  = install --compare -vD
 cpp      = g++
 cppflags = -Wall -std=c++11 -O2
 
+all: cpp elixir haskell
+
 dirs:
-	mkdir -p $(build)/$(bin)
 	mkdir -p $(bin)
 
 cpp: dirs
-	$(cpp) $(cppflags) -o build/bin/five $(src)/five.cpp
-	$(cpp) $(cppflags) -o build/bin/aoc $(src)/main.cpp
+	$(cpp) $(cppflags) -o $(bin)/five $(src)/five.cpp
+	$(cpp) $(cppflags) -o $(bin)/aoc  $(src)/main.cpp
 
-install: cpp
-	$(install) -m 755 $(build)/$(bin)/* $(bin)/ 
+haskell: dirs
+	stack install
+
+elixir: dirs
+	mix escript.build
 
 clean:
-	rm -rf .stack-work $(build) $(bin)
+	rm -rf $(build)
+
+deepclean: clean
+	rm -rf $(bin)
