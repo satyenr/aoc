@@ -3,7 +3,7 @@ defmodule AOC.Y2017 do
   def answer(day, input) do
     case day do
       "1" -> One.answer(input)
-      _   -> IO.puts "Day #{day} not available."; System.halt(1)
+      _   -> raise ArgumentError, message: "Day #{day} not available"
     end 
   end
 end

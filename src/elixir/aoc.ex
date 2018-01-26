@@ -2,7 +2,11 @@ defmodule AOC do
   alias AOC.Y2017, as: Y2017
 
   def main(args) do
-    args |> parse |> process
+    try do
+      args |> parse |> process
+    rescue
+      err in ArgumentError -> IO.puts(err.message)
+    end
   end
 
   defp parse(args) do
@@ -35,7 +39,7 @@ defmodule AOC do
     ready = System.system_time(:microsecond)
     ans = case year do
       "2017" -> Y2017.answer(day, input)
-      _      -> IO.puts "Year #{year} not available."; System.halt(0)
+      _      -> raise ArgumentError, message: "Year #{year} not available"
     end
     final = System.system_time(:microsecond)
 
