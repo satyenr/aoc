@@ -12,7 +12,7 @@ cabal-version:       >=1.10
 extra-source-files:  README.md
 
 ---------------------------------------
-executable aoc-hs
+executable aoc-haskell
   hs-source-dirs:      src/haskell
   main-is:             main.hs
   other-modules:
