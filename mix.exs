@@ -6,25 +6,30 @@ defmodule AOC.MixProject do
       app: :aoc,
       version: "0.1.0",
       elixir: "~> 1.6",
-      escript: [main_module: AOC], 
+      escript: escript(),
       start_permanent: Mix.env() == :prod,
       elixirc_paths: ["src/elixir"],
       deps: deps()
     ]
   end
 
-  # Run "mix help compile.app" to learn about applications.
+  def escript do
+    cwd = System.cwd()
+    bindir = System.get_env("AOC_BINDIR") || "#{cwd}/bin"
+    [
+      main_module: AOC,
+      name: "aoc-elixir",
+      path: "#{bindir}/aoc-elixir"
+    ]
+  end
+
   def application do
     [
       extra_applications: [:logger]
     ]
   end
 
-  # Run "mix help deps" to learn about dependencies.
   defp deps do
-    [
-      # {:dep_from_hexpm, "~> 0.3.0"},
-      # {:dep_from_git, git: "https://github.com/elixir-lang/my_dep.git", tag: "0.1.0"},
-    ]
+    []
   end
 end
