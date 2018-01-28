@@ -4,16 +4,16 @@
 
 struct config {
     std::string year;
-    int day;
-    int part;
+    std::string day;
 };
 
 void help() {
     std::cout <<
-        "\t -y|--year <year>     advent of code year\n"
-        "\t -d|--day <day>       advent of code day\n"
-        "\t -p|--part <part>     part of the problem\n"
-        "\t -h|--help            print this message\n";
+    "Advent of Code (C++)\n\n"
+    "Usage:\n"
+    "  -y, --year <year>     advent of code year\n"
+    "  -d, --day <day>       advent of code day for the given year\n"
+    "  -h, --help            print this message\n";
     exit(1);
 }
 
@@ -34,23 +34,19 @@ void parse_opts(int argc, char** argv, config *retval) {
         if (-1 == opt) break;
 
         switch (opt) {
-        case 'y':
-            retval->year = std::string(optarg);
-            break;
+            case 'y':
+                retval->year = std::string(optarg);
+                break;
 
-        case 'd':
-            retval->day = std::stoi(optarg);
-            break;
+            case 'd':
+                retval->day = std::string(optarg);
+                break;
 
-        case 'p':
-            retval->part = std::stoi(optarg);
-            break;
-
-        case 'h':
-        case '?':
-        default:
-            help();
-            break;
+            case 'h':
+            case '?':
+            default:
+                help();
+                break;
         }
     }
 }
@@ -59,7 +55,6 @@ int main(int argc, char** argv) {
     config conf;
     parse_opts(argc, argv, &conf);
     std::cout << conf.year << " "
-              << conf.day << " "
-              << conf.part << " "
-              << std::endl;
+    << conf.day << " "
+    << std::endl;
 }
