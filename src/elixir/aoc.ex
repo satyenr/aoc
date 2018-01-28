@@ -22,12 +22,12 @@ defmodule AOC do
     IO.puts """
     Advent of Code (Elixir)
 
-    Usage: aoc-ex (--year YEAR) (-d|--day DAY)
+    Usage: aoc-elixir (--year YEAR) (--day DAY)
 
     Available options:
-      --help                Show this help text
-      --year YEAR           Advent of Code year (default: 2017)
-      --day DAY             AoC day for the given year
+      --year YEAR           advent of code year
+      --day DAY             advent of code day for the given year
+      --help                show this help message
     """
   end
 
