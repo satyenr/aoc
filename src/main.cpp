@@ -1,4 +1,5 @@
 #include <getopt.h>
+#include <libgen.h>
 #include <iostream>
 #include <string>
 
@@ -7,14 +8,15 @@ struct config {
     std::string day;
 };
 
-void help() {
-    std::cout <<
-    "Advent of Code (C++)\n\n"
-    "Usage:\n"
-    "  -y, --year <year>     advent of code year\n"
-    "  -d, --day <day>       advent of code day for the given year\n"
-    "  -h, --help            print this message\n";
-    exit(1);
+void help(char* progname) {
+    std::cout << "Advent of Code (C++)\n\n"
+                 "Usage: "
+              << progname
+              << " (-y|--year YEAR) (-d|--day DAY)\n\n"
+                 "Available options:\n"
+                 "  -y, --year YEAR         advent of code year\n"
+                 "  -d, --day DAY           advent of code day for the given year\n"
+                 "  -h, --help              show this help message\n";
 }
 
 void parse_opts(int argc, char** argv, config *retval) {
@@ -22,7 +24,6 @@ void parse_opts(int argc, char** argv, config *retval) {
     const option long_opts[] = {
         {"year",    required_argument,  nullptr, 'y'},
         {"day",     required_argument,  nullptr, 'd'},
-        {"part",    required_argument,  nullptr, 'p'},
         {"help",    no_argument,        nullptr, 'h'},
         {nullptr,   0,                  nullptr,  0 }
     };
@@ -45,8 +46,8 @@ void parse_opts(int argc, char** argv, config *retval) {
             case 'h':
             case '?':
             default:
-                help();
-                break;
+                help(basename(argv[0]));
+                exit(0);
         }
     }
 }
