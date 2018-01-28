@@ -13,8 +13,8 @@ dirs:
 	mkdir -p $(bin)
 
 cpp: dirs
-	$(cpp) $(cppflags) -o $(bin)/five $(src)/five.cpp
-	$(cpp) $(cppflags) -o $(bin)/aoc  $(src)/main.cpp
+	$(cpp) $(cppflags) -o $(bin)/five    $(src)/five.cpp
+	$(cpp) $(cppflags) -o $(bin)/aoc-cpp $(src)/main.cpp
 
 haskell: dirs
 	stack install
