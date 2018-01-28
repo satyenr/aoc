@@ -48,16 +48,16 @@ commandLineParser = CommandLine
           <> metavar "YEAR"
           <> showDefault
           <> value 2017
-          <> help "Advent of Code year" )
+          <> help "advent of code year" )
         <*> option auto
            ( long "day"
           <> short 'd'
           <> metavar "DAY"
-          <> help "AoC day for the given year" )
+          <> help "advent of code day for the given year" )
 
 parseCommandLine :: IO CommandLine
 parseCommandLine = parse $ info (helper <*> commandLineParser)
-    (fullDesc <> header "Advent of Code")
+    (fullDesc <> header "Advent of Code (Haskell)")
     where parse parserInfo =
             Terminal.size >>=
                 ($ parserInfo) .
