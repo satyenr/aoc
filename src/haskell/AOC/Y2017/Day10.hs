@@ -25,9 +25,9 @@ result input =
 knotHash :: [Int] -> [Int] -> Int -> Int -> [Int]
 knotHash [] list _ _          = list
 knotHash (x:xs) list cur skip = knotHash xs list' cur' (skip + 1)
-    where list'       = rotate (length list - cur) $ nxt $ rotate cur list
-          nxt         = liftA2 (++) (reverse . (take x)) (drop x)
-          cur'        = (cur + x + skip) `mod` (length list)
+    where list' = rotate (length list - cur) $ nxt $ rotate cur list
+          nxt   = liftA2 (++) (reverse . (take x)) (drop x)
+          cur'  = (cur + x + skip) `mod` (length list)
 
 sparseHash :: [Int] -> [Int] -> Int -> [Int]
 sparseHash xs list count =

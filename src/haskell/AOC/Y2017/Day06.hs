@@ -7,7 +7,6 @@ import AOC.Utils  (rotate)
 
 import qualified Data.Set as S
 
-
 result :: String -> (String, String)
 result input =
     let banks = map (read :: String -> Int) $ words input
