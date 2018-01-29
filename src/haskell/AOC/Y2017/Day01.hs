@@ -13,5 +13,4 @@ result input =
     in (one, two)
 
 sumDups :: Int -> String -> Int
-sumDups n xs = sum $ map (digitToInt . fst) $ filter eq $ zip xs (drop n $ cycle xs)
-    where eq x = fst x == snd x
+sumDups n xs = sum $ map (digitToInt . fst) $ filter (uncurry (==)) $ zip xs (drop n $ cycle xs)
