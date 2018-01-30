@@ -13,3 +13,5 @@ erl_crash.dump
 *.tar
 .DS_Store
 /out/
+/.idea/workspace.xml
+/.idea/tasks.xml
