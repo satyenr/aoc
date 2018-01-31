@@ -2,6 +2,7 @@ package aoc.seventeen
 
 private fun sumDups(distance: Int, capcha: String): Int {
     return capcha.plus(capcha.substring(0, distance))
+            .splitToSequence("")
             .windowed(distance + 1)
             .filter { it.last() == it.first() }
             .map { it.first().toString().toInt() }
