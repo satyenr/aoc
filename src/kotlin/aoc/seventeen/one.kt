@@ -8,8 +8,9 @@ private fun sumDups(distance: Int, capcha: String) =
                 .map { it.first().toString().toInt() }
                 .sum()
 
-fun one(input: String): Pair<String, String> {
-    val one = sumDups(1, input).toString()
-    val two = sumDups(input.length/2, input).toString()
+fun one(input: List<String>): Pair<String, String> {
+    val capcha = input.first()
+    val one = sumDups(1, capcha).toString()
+    val two = sumDups(capcha.length/2, capcha).toString()
     return Pair(one, two)
 }
