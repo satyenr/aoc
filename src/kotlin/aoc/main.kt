@@ -10,7 +10,7 @@ fun main(args: Array<String>) {
     val day = args[2]
     val inputFile = "$inputDir/$year/$day"
     val input = File(inputFile).readLines()
-    var output = result(day.toInt(), input)
+    var output = seventeen(day.toInt(), input)
     println(output.first)
     println(output.second)
 }
