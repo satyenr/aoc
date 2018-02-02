@@ -13,7 +13,11 @@ fun two(input: List<String>): Pair<String, String> {
     }
 
     var two = fun(row: List<Int>): Int {
-        return 0
+        val sorted = row.sorted()
+        return sorted.mapIndexedNotNull({ index, value ->
+            val remaining = sorted.drop(index + 1)
+            if (value != 0) remaining.find({ it % value == 0 })?.div(value) else null
+        }).component1()
     }
 
     return Pair(
