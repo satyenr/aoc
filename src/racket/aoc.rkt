@@ -15,3 +15,12 @@
 (define (one input)
   (cons (sum-dups input 1)
         (sum-dups input (quotient (string-length input) 2))))
+
+(define (checksum fn spreadsheet)
+  (foldl + 0 (map fn spreadsheet)))
+
+(define (two input)
+  (let* ([spreadsheet (map (lambda (x) (map string->number (string-split x))) input)]
+         [fn-one (lambda (row) (- (argmax identity row) (argmin identity row)))]
+     (cons (checksum fn-one spreadsheet)
+           null)))
