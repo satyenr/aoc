@@ -8,8 +8,8 @@
 
 (define (sum-dups capcha distance)
   (let ([pair-equal? (lambda (x) (equal? (car x) (car (cdr x))))]
-        [capcha (filter number? (map string->number (string-split capcha "")))])
-    (foldl (lambda (x acc) (+ acc (car x))) 0
+        [capcha (filter non-empty-string? (string-split capcha ""))])
+    (foldl (lambda (x acc) (+ acc (string->number (car x)))) 0
            (filter pair-equal? (zip capcha (rotate capcha distance))))))
 
 (define (one input)
