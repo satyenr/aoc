@@ -7,7 +7,7 @@
   (drop (append lst (take lst n)) n))
 
 (define (sum-dups capcha distance)
-  (let ([pair-equal? (λ (x) (equal? (car x) (car (cdr x))))]
+  (let ([pair-equal? (λ (x) (equal? (car x) (cadr x)))]
         [capcha (filter non-empty-string? (string-split capcha ""))])
     (foldl (λ (x acc) (+ acc (string->number (car x)))) 0
            (filter pair-equal? (zip capcha (rotate capcha distance))))))
