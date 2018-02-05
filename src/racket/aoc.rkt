@@ -20,15 +20,14 @@
   (foldl + 0 (map fn spreadsheet)))
 
 (define (two input)
-  (letrec ([spreadsheet (map (λ (x) (map string->number (string-split x))) input)]
-           [divisible (λ (x) (= (remainder (cdr x) (car x)) 0))]
-           [all-pairs
-            (λ (row) (if (null? row)
-                         null
-                         (append (map (λ (x) (cons (car row) x))
-                                      (cdr row)) (all-pairs (cdr row)))))]
-           [fn-one (λ (row) (- (argmax identity row) (argmin identity row)))]
-           [fn-two (λ (row) (let ([divisible-pair (car (filter divisible (all-pairs (sort row <))))])
-                                  (quotient (cdr divisible-pair) (car divisible-pair))))])
-     (cons (checksum fn-one spreadsheet)
-           (checksum fn-two spreadsheet))))
+  (let ([spreadsheet (map (λ (x) (map string->number (string-split x))) input)]
+        [fn-one (λ (row) (- (argmax identity row) (argmin identity row)))]
+        [fn-two (λ (row) (letrec ([pairs (λ (r) (if (null? r)
+                                                    null
+                                                    (append (map (λ (x) (cons (car r) x))
+                                                                 (cdr r)) (pairs (cdr r)))))]
+                                  [divisible (λ (x) (= (remainder (cdr x) (car x)) 0))]
+                                  [divisible-pair (car (filter divisible (pairs (sort row <))))])
+                           (quotient (cdr divisible-pair) (car divisible-pair))))])
+    (cons (checksum fn-one spreadsheet)
+          (checksum fn-two spreadsheet))))
