@@ -38,3 +38,11 @@ executable aoc-haskell
     , text
   ghc-options:         -Wall
   other-extensions:    OverloadedStrings
+
+executable aoc
+  hs-source-dirs:      src
+  main-is:             AOC2019.hs
+  default-language:    Haskell2010
+  build-depends:
+      base
+  ghc-options:         -Wall
