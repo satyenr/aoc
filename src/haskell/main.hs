@@ -2,7 +2,6 @@
 
 module Main where
 
-import Data.Monoid
 import Formatting
 import Formatting.Clock
 import Options.Applicative
