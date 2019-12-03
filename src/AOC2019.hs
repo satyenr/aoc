@@ -13,6 +13,7 @@ main = do
            (totalFuelRequired masses)
            (totalFuelRequired' masses)
 
+-- | The Tyranny of the Rocket Equation
 -- | https://adventofcode.com/2019/day/1
 getMasses :: String -> [Int]
 getMasses = map (read :: String -> Int) . lines
