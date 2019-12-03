@@ -21,11 +21,10 @@ totalFuelRequired :: [Int] -> Int
 totalFuelRequired masses = List.foldl' (+) 0 $ map fuelRequired masses
 
 totalFuelRequired' :: [Int] -> Int
-totalFuelRequired' masses = List.foldl' (+) 0 $ map (fuelRequired' 0) masses
+totalFuelRequired' masses = List.foldl' (+) 0 $ map fuelRequired' masses
 
-fuelRequired' :: Int -> Int -> Int
-fuelRequired' acc 0 = acc
-fuelRequired' acc m = fuelRequired' (acc + (fuelRequired m)) (fuelRequired m)
+fuelRequired' :: Int -> Int
+fuelRequired' m = sum $ takeWhile (> 0) $ drop 1 $ iterate fuelRequired m
 
 fuelRequired :: Int -> Int
 fuelRequired m = max ((div m 3) - 2) 0
