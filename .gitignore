@@ -16,3 +16,4 @@ erl_crash.dump
 /.idea/workspace.xml
 /.idea/tasks.xml
 /obj
+/.ionide
