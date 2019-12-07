@@ -1,8 +1,12 @@
 ﻿open System
 open System.IO
 
-(* The Tyranny of the Rocket Equation -- https://adventofcode.com/2019/day/1 *)
 module RocketEquation =
+(*
+ * The Tyranny of the Rocket Equation
+ * https://adventofcode.com/2019/day/1
+ *)
+
     let parse lines =
         lines |> Seq.map int
 
@@ -26,11 +30,16 @@ module RocketEquation =
         let snd = totalFuel fuel' masses
         (fst, snd)
 
-
-(* 1202 Program Alarm -- https://adventofcode.com/2019/day/2 *)
 module ProgramAlarm =
+(*
+ * 1202 Program Alarm
+ * https://adventofcode.com/2019/day/2
+ *)
+
     let parse (lines: string seq) =
-        (lines |> Seq.head).Split "," |> Seq.map int |> Seq.toList
+        (lines |> Seq.head).Split ","
+        |> Seq.map int
+        |> Seq.toList
 
     let run codes noun verb =
         let mem = List.toArray codes
