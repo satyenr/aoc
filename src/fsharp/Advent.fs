@@ -17,12 +17,11 @@ module RocketEquation =
     let fuel mass = max ((mass / 3) - 2) 0
 
     let fuel' mass =
-        let rec fuel'' acc m =
-            let fm = fuel m
-            match m with
-            | 0 -> acc
-            | _ -> fuel'' (acc + fm) (fm)
-        fuel'' 0 mass
+        mass
+        |> Seq.unfold (fun m -> Some(m, fuel m))
+        |> Seq.skip 1
+        |> Seq.takeWhile (fun m -> m > 0)
+        |> Seq.sum
 
     let totalFuel adder masses = Seq.sumBy adder masses
 
@@ -96,5 +95,7 @@ module Main =
         let solutions = [ RocketEquation.solution; ProgramAlarm.solution ]
         let input = read 2019
         let results = solutions |> List.mapi (fun idx soln -> run (input (idx + 1)) soln)
-        results |> List.map write |> ignore
+        results
+        |> List.map write
+        |> ignore
         0
