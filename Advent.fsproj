@@ -7,6 +7,8 @@
 
   <ItemGroup>
     <Compile Include="src/fsharp/Library.fs" />
+    <Compile Include="src/fsharp/RocketEquation.fs" />
+    <Compile Include="src/fsharp/ProgramAlarm.fs" />
     <Compile Include="src/fsharp/Advent.fs" />
   </ItemGroup>
 
