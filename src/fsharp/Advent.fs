@@ -1,25 +1,31 @@
 module Advent.Main
 
-let read year day =
-    let file = sprintf "inputs/%d/%02d.txt" year day
+let read problem =
+    let year = problem.Year
+    let day = problem.Day
+    let file = sprintf "inputs/%s/%02d.txt" year day
     System.IO.File.ReadLines file
 
-let run input solution =
-    let lines = solution.Input input
-    let fst = solution.First lines
-    let snd = solution.Second lines
-    (solution.Name, fst, snd)
+let run problem = problem.Solver(read problem)
 
-let write output =
-    let name, fst, snd = output
-    printfn "%-40s \t %A \t %A" name fst snd
+let write problem result =
+    let year = problem.Year
+    let day = problem.Day
+    let title = problem.Title
+    let first, second = result
+    printfn "%s \t %02d \t %-40s \t %s \t %s" year day title first second
 
 [<EntryPoint>]
 let main argv =
-    let solutions = [ RocketEquation.solution; ProgramAlarm.solution ]
-    let input = read 2019
-    let results = solutions |> List.mapi (fun idx soln -> run (input (idx + 1)) soln)
-    results
-    |> List.map write
+    let problems =
+        [ RocketEquation.problem
+          ProgramAlarm.problem ]
+        |> List.sortBy (fun prob -> sprintf "%s %02d" prob.Year prob.Day)
+
+    let results = problems |> List.map run
+
+    List.zip problems results
+    |> List.map (fun pr -> write (fst pr) (snd pr))
     |> ignore
+
     0
