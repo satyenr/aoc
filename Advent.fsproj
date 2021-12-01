@@ -1,15 +1,16 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <OutputType>Exe</OutputType>
-    <TargetFramework>net6.0</TargetFramework>
-  </PropertyGroup>
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net6.0</TargetFramework>
+    </PropertyGroup>
 
-  <ItemGroup>
-    <Compile Include="src/fsharp/Library.fs" />
-    <Compile Include="src/fsharp/2019/RocketEquation.fs" />
-    <Compile Include="src/fsharp/2019/ProgramAlarm.fs" />
-    <Compile Include="src/fsharp/Advent.fs" />
-  </ItemGroup>
+    <ItemGroup>
+        <Compile Include="src/fsharp/Library.fs" />
+        <Compile Include="src/fsharp/2019/RocketEquation.fs" />
+        <Compile Include="src/fsharp/2019/ProgramAlarm.fs" />
+        <Compile Include="src/fsharp/2021/SonarSweep.fs" />
+        <Compile Include="src/fsharp/Advent.fs" />
+    </ItemGroup>
 
 </Project>

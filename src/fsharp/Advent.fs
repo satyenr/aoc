@@ -13,13 +13,14 @@ let write problem result =
     let day = problem.Day
     let title = problem.Title
     let first, second = result
-    printfn "%s \t %02d \t %-40s \t %s \t %s" year day title first second
+    printfn "%s \t %02d \t %-40s \t %-10s \t %-10s" year day title first second
 
 [<EntryPoint>]
 let main argv =
     let problems =
         [ RocketEquation.problem
-          ProgramAlarm.problem ]
+          ProgramAlarm.problem
+          SonarSweep.problem ]
         |> List.sortBy (fun prob -> sprintf "%s %02d" prob.Year prob.Day)
 
     let results = problems |> List.map run
