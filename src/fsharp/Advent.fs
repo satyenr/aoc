@@ -20,7 +20,8 @@ let main argv =
     let problems =
         [ RocketEquation.problem
           ProgramAlarm.problem
-          SonarSweep.problem ]
+          SonarSweep.problem
+          Dive.problem ]
         |> List.sortBy (fun prob -> sprintf "%s %02d" prob.Year prob.Day)
 
     let results = problems |> List.map run

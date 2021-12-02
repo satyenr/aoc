@@ -10,6 +10,7 @@
         <Compile Include="src/fsharp/2019/RocketEquation.fs" />
         <Compile Include="src/fsharp/2019/ProgramAlarm.fs" />
         <Compile Include="src/fsharp/2021/SonarSweep.fs" />
+        <Compile Include="src/fsharp/2021/Dive.fs" />
         <Compile Include="src/fsharp/Advent.fs" />
     </ItemGroup>
 
