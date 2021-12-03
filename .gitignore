@@ -17,5 +17,5 @@ erl_crash.dump
 /.idea/tasks.xml
 /obj
 /.ionide
-
+.config/
 .fake

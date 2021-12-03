@@ -1,5 +1,5 @@
 module Advent.SonarSweep
-(* Sonar Sweep *)
+(* 01. Sonar Sweep *)
 
 let parseInput input = Seq.map int input
 
